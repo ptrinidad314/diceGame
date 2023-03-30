@@ -16,16 +16,7 @@ namespace diceGame.Controllers
 
         public IActionResult Index()
         {
-            GameState state = new GameState();
-
-            for (var i = 0; i < numDice; i++) 
-            {
-                var die = new Die();
-                die.value = die.getDieValue();
-                die.url = die.getDieImageUrl();
-                state.dice.Add(die);
-            }
-            
+            GameState state = new GameState(numDice);
 
             return View(state);
         }
@@ -34,17 +25,15 @@ namespace diceGame.Controllers
 
         public IActionResult PlayGame(GameDTO gameDTO) 
         {
-            GameState state = new GameState();
+            GameState state = new GameState(numDice);
             state.bet = gameDTO.bet;
             state.balance = gameDTO.balance;
 
-            //die rolls
-            for (var i = 0; i < numDice; i++)
+            if (gameDTO.bet == 0) 
             {
-                var die = new Die();
-                die.value = die.getDieValue();
-                die.url = die.getDieImageUrl();
-                state.dice.Add(die);
+                state.result = GameResult.ERROR;
+                state.message = "Valid Bet Required";
+                return View(state);
             }
 
             //invalid model state
@@ -58,6 +47,8 @@ namespace diceGame.Controllers
                 {
                     foreach (var modelError in modelState.Errors)
                     {
+                        var test = modelState.GetModelStateForProperty;
+
                         errMsg = errMsg + "," + modelError.ErrorMessage; 
                     }
                 }
@@ -77,8 +68,6 @@ namespace diceGame.Controllers
             }
 
            
-
-
             //calculate roll results
             state.CalculateRoll();
             state.CalculateBalance();

@@ -7,6 +7,23 @@
         public int bet { get; set; }
         public List<Die> dice { get; set; } = new List<Die>();
         public string message { get; set; } = string.Empty;
+
+        public GameState(int numDice)
+        {
+            GenerateDieRolls(numDice);
+        }
+
+        public void GenerateDieRolls(int numDice) 
+        {
+            for (var i = 0; i < numDice; i++)
+            {
+                var die = new Die();
+                die.value = die.getDieValue();
+                die.url = die.getDieImageUrl();
+                this.dice.Add(die);
+            }
+        }
+        
         public void CalculateRoll()
         {
             int count1 = 0;
