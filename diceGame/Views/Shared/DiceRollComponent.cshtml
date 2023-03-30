@@ -1,0 +1,57 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model diceGame.Models.GameState
+
+<div class="grid">
+    @foreach (var die in Model.dice)
+    {
+        <img src="@die.url" alt="die image" />
+    }
+</div>
+
+<form action="/home/PlayGame" id="playGameForm">
+    <div class="grid">
+        <div>
+            <label for="balance">BANK</label>
+            <input name="balance" id="balance" type="text" value="@Model.balance" readonly />
+        </div>
+        <div>
+            <label for="bet">BET</label>
+            @if (Model.result == GameResult.INIT)
+            {
+                <input name="bet" id="bet" type="text" value="" />
+            }
+            else if(Model.result == GameResult.GAMEOVER)
+            {
+                <input name="bet" id="bet" type="text" value="@Model.bet" disabled />
+            }
+            else
+            {
+                <input name="bet" id="bet" type="text" value="@Model.bet" />
+            }
+        </div>
+        <div>
+
+            @if (Model.result == GameResult.GAMEOVER)
+            {
+                <button type="submit" disabled>ROLL</button>
+            }
+            else
+            {
+                <button type="submit">ROLL</button>
+            }
+
+            <button type="submit" id="btnNewGame">NEW GAME</button>
+        </div>
+        @if (!string.IsNullOrEmpty(Model.message))
+        {
+            <div>
+                <p>@Model.message</p>
+            </div>   
+        }
+    </div>
+</form>
