@@ -13,7 +13,7 @@
     }
 </div>
 
-<form action="/home/PlayGame" id="playGameForm">
+<form action="/home/PlayGame" id="playGameForm" onsubmit="ValidatePlayGameForm(event)">
     <div class="grid">
         <div>
             <label for="balance">BANK</label>
@@ -38,20 +38,17 @@
 
             @if (Model.result == GameResult.GAMEOVER)
             {
-                <button type="submit" disabled>ROLL</button>
+                <button type="submit" id="btnRoll" disabled>ROLL</button>
             }
             else
             {
-                <button type="submit">ROLL</button>
+                <button type="submit" id="btnRoll">ROLL</button>
             }
 
             <button type="submit" id="btnNewGame">NEW GAME</button>
         </div>
-        @if (!string.IsNullOrEmpty(Model.message))
-        {
-            <div>
-                <p>@Model.message</p>
-            </div>   
-        }
+        <div>
+            <p id="message">@Model.message</p>
+        </div>
     </div>
 </form>

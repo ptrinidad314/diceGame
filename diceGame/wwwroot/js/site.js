@@ -8,3 +8,26 @@ document.getElementById("btnNewGame").addEventListener('click', () => {
     document.getElementById('playGameForm').action = '/home/index';
 
 });
+
+function ValidatePlayGameForm(e){
+
+    var bet = document.getElementById('bet').value;
+
+    if (bet === '') {
+
+        document.getElementById('message').innerHTML = 'valid bet required';
+
+        e.preventDefault();
+
+    } else if (bet < 1) {
+        document.getElementById('message').innerHTML = 'valid bet required';
+
+        e.preventDefault();
+    } else if (bet.includes('.')) {
+
+        document.getElementById('message').innerHTML = 'valid bet required';
+
+        e.preventDefault();
+    }
+
+}
