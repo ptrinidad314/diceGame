@@ -1,25 +1,4 @@
-/*html {
-  font-size: 14px;
-}
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  margin-bottom: 60px;
-}*/
 
 :root {
     --primary: #000;
@@ -35,10 +14,6 @@ body {
     color: var(--primary);
     background: rgb(255,63,147);
     background: radial-gradient(circle, rgba(255,63,147,1) 67%, rgba(148,187,233,1) 100%);
-    /*background: rgb(63,94,251);
-    background: radial-gradient(circle, rgba(63,94,251,1) 2%, rgba(252,70,107,0.9808123933167017) 38%);*/
-    /*background: rgb(238,174,202);
-    background: radial-gradient(circle, rgba(238,174,202,1) 67%, rgba(148,187,233,1) 100%);*/
 }
 
 
@@ -148,13 +123,19 @@ h1 {
     }
 
 
+.rollDie {
+    animation: rollingDie infinite 0.5s linear;
+}
+
+@keyframes rollingDie {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
 @media screen and (min-width:620px) {
     .grid .textPanel {
         grid-column: span 15;
-        /*width: 100%;
-        grid-column: span 10;
-        text-align: center;
-        margin-top: 1em;*/
+
     }
 
         .grid .textPanel input {
@@ -164,9 +145,7 @@ h1 {
 
     .grid .buttonPanel button {
         width:30%;
-        /*display: block;
-        margin: 0 auto;
-        width: 40%;*/
+
     }
 
     .infoText {
@@ -192,10 +171,7 @@ h1 {
 
     .grid .textPanel {
         grid-column: span 10;
-        /*width: 100%;
-        grid-column: span 10;
-        text-align: center;
-        margin-top: 1em;*/
+
     }
 
         .grid .textPanel input {
@@ -204,18 +180,12 @@ h1 {
 
     .grid .messagePanel {
         grid-column: span 10;
-        /*width: 100%;
-        grid-column: span 10;
-        text-align: center;
-        height: 5em;
-        line-height: 5em;*/
+       
     }
 
     .grid .buttonPanel button {
         width: 20%;
-        /*display: block;
-        margin: 0 auto;
-        width: 40%;*/
+        
     }
 
     .grid .buttonPanel .btnRoll {
@@ -252,9 +222,7 @@ h1 {
 
     .grid .buttonPanel button {
         width: 20%;
-        /*display: block;
-        margin: 0 auto;
-        width: 40%;*/
+        
     }
 
     .infoIcon {

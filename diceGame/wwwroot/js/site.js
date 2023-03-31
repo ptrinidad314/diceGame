@@ -7,6 +7,7 @@ document.getElementById("btnNewGame").addEventListener('click', () => {
 
     document.getElementById('playGameForm').action = '/home/index';
 
+    form.submit();
 });
 
 document.getElementById('infoIcon').addEventListener('click', () => {
@@ -21,30 +22,69 @@ document.getElementById('infoIcon').addEventListener('click', () => {
 
 });
 
-function ValidatePlayGameForm(e){
+document.getElementById('btnRoll').addEventListener('click', () => {
 
-    var submitterId = e.submitter.id;
+    var isValid = ValidatePlayGameForm();
 
-    if (submitterId !== 'btnNewGame') {
+    if (isValid) {
 
-        var bet = document.getElementById('bet').value;
+        var dieElems = document.getElementsByClassName('die');
 
-        if (bet === '') {
-
-            document.getElementById('message').innerHTML = 'valid bet required';
-
-            e.preventDefault();
-
-        } else if (bet < 1) {
-            document.getElementById('message').innerHTML = 'valid bet required';
-
-            e.preventDefault();
-        } else if (bet.includes('.')) {
-
-            document.getElementById('message').innerHTML = 'valid bet required';
-
-            e.preventDefault();
+        for (var i = 0; i < dieElems.length; i++) {
+            dieElems[i].classList.add('rollDie');
         }
+
+        setTimeout(function () {
+
+            form.submit();
+
+        }, 2000);
     }
+
+    return false;
+
+});
+
+
+var form = document.getElementById('playGameForm');
+form.onsubmit = function () {
+    return false;
+}
+
+
+
+
+function ValidatePlayGameForm(){
+
+    var isValid = true;
+
+    var bet = document.getElementById('bet').value;
+    var balance = document.getElementById('balance').value;
+
+    if (bet === '') {
+
+        document.getElementById('message').innerHTML = 'valid bet required';
+
+        isValid = false;
+
+    } else if (parseInt(bet) < 1) {
+        document.getElementById('message').innerHTML = 'valid bet required';
+
+        isValid = false;
+    } else if (bet.includes('.')) {
+
+        document.getElementById('message').innerHTML = 'valid bet required';
+
+        isValid = false;
+
+    } else if (parseInt(bet) > parseInt(balance)) {
+
+        document.getElementById('message').innerHTML = "you don't have enough for that bet ";
+
+        isValid = false;
+
+    }
+
+    return isValid;
 
 }

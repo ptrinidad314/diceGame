@@ -11,11 +11,11 @@
 <div class="grid diceGrid">
     @foreach (var die in Model.dice)
     {
-        <img src="@die.url" alt="die image" />
+        <img class="die" src="@die.url" alt="die image" />
     }
 </div>
 
-<form action="/home/PlayGame" id="playGameForm" onsubmit="ValidatePlayGameForm(event)">
+<form action="/home/PlayGame" id="playGameForm">
     <div class="grid">
         <div class="textPanel">
             <label for="balance">BANK</label>
