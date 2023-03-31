@@ -9,25 +9,42 @@ document.getElementById("btnNewGame").addEventListener('click', () => {
 
 });
 
+document.getElementById('infoIcon').addEventListener('click', () => {
+
+    var displayVal = document.getElementById('infoText').style.display;
+
+    if (displayVal === '' || displayVal === 'none') {
+        document.getElementById('infoText').style.display = 'block';
+    } else {
+        document.getElementById('infoText').style.display = 'none';
+    }
+
+});
+
 function ValidatePlayGameForm(e){
 
-    var bet = document.getElementById('bet').value;
+    var submitterId = e.submitter.id;
 
-    if (bet === '') {
+    if (submitterId !== 'btnNewGame') {
 
-        document.getElementById('message').innerHTML = 'valid bet required';
+        var bet = document.getElementById('bet').value;
 
-        e.preventDefault();
+        if (bet === '') {
 
-    } else if (bet < 1) {
-        document.getElementById('message').innerHTML = 'valid bet required';
+            document.getElementById('message').innerHTML = 'valid bet required';
 
-        e.preventDefault();
-    } else if (bet.includes('.')) {
+            e.preventDefault();
 
-        document.getElementById('message').innerHTML = 'valid bet required';
+        } else if (bet < 1) {
+            document.getElementById('message').innerHTML = 'valid bet required';
 
-        e.preventDefault();
+            e.preventDefault();
+        } else if (bet.includes('.')) {
+
+            document.getElementById('message').innerHTML = 'valid bet required';
+
+            e.preventDefault();
+        }
     }
 
 }

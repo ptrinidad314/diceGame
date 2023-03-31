@@ -6,7 +6,9 @@
 
 @model diceGame.Models.GameState
 
-<div class="grid">
+<h1>DICE GAME</h1>
+
+<div class="grid diceGrid">
     @foreach (var die in Model.dice)
     {
         <img src="@die.url" alt="die image" />
@@ -15,11 +17,11 @@
 
 <form action="/home/PlayGame" id="playGameForm" onsubmit="ValidatePlayGameForm(event)">
     <div class="grid">
-        <div>
+        <div class="textPanel">
             <label for="balance">BANK</label>
             <input name="balance" id="balance" type="text" value="@Model.balance" readonly />
         </div>
-        <div>
+        <div class="textPanel">
             <label for="bet">BET</label>
             @if (Model.result == GameResult.INIT)
             {
@@ -34,21 +36,33 @@
                 <input name="bet" id="bet" type="text" value="@Model.bet" />
             }
         </div>
-        <div>
+        <div class="messagePanel">
+            <p id="message">@Model.message</p>
+        </div>
+        <div class="buttonPanel">
 
             @if (Model.result == GameResult.GAMEOVER)
             {
-                <button type="submit" id="btnRoll" disabled>ROLL</button>
+                <button type="submit" id="btnRoll" class="btnRoll" disabled>ROLL</button>
             }
             else
             {
-                <button type="submit" id="btnRoll">ROLL</button>
+                <button type="submit" id="btnRoll" class="btnRoll">ROLL</button>
             }
 
-            <button type="submit" id="btnNewGame">NEW GAME</button>
-        </div>
-        <div>
-            <p id="message">@Model.message</p>
-        </div>
+            <button type="submit" id="btnNewGame" class="btnNewGame">NEW GAME</button>
+        </div>        
     </div>
 </form>
+
+<div class="infoIcon" id="infoIcon">
+    <img src="~/images/info.svg" />
+</div>
+<div class="infoText" id="infoText">
+    <ul>
+        <li>5 of a kind - 100 x bet</li>
+        <li>4 of a kind - 50 x bet</li>
+        <li>3 of a kind - 10 x bet</li>
+        <li>Straight - 5 x bet</li>
+    </ul>
+</div>

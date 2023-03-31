@@ -1,4 +1,4 @@
-html {
+/*html {
   font-size: 14px;
 }
 
@@ -19,4 +19,249 @@ html {
 
 body {
   margin-bottom: 60px;
+}*/
+
+:root {
+    --primary: #000;
+    --secondary: #FFF;
+    --active: #94bbe9;
+}
+
+html {
+    
+}
+
+body {
+    color: var(--primary);
+    background: rgb(255,63,147);
+    background: radial-gradient(circle, rgba(255,63,147,1) 67%, rgba(148,187,233,1) 100%);
+    /*background: rgb(63,94,251);
+    background: radial-gradient(circle, rgba(63,94,251,1) 2%, rgba(252,70,107,0.9808123933167017) 38%);*/
+    /*background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 67%, rgba(148,187,233,1) 100%);*/
+}
+
+
+h1 {
+    font-size: 4em;
+    width: 100%;
+    text-align: center;
+    font-family: 'Modak', cursive;
+}
+
+.gameContainer {
+    padding: 5em 1em;
+}
+
+.grid {
+    display:grid;
+    grid-template-columns: repeat(30, 1fr);
+    width:100%;
+}
+
+    .grid.diceGrid {
+        gap:1em;
+        margin: 2em 0;
+    }
+
+    .grid img {
+        width:100%;
+        grid-column:span 6;
+        margin:0 auto;
+    }
+
+    .grid .textPanel {
+        width:100%;
+        grid-column: span 30;
+        text-align:center;
+        margin-top:1em;
+    }
+
+    .grid .textPanel label {
+        display:block;
+    }
+
+        .grid .textPanel input {
+            width: 40%;
+            text-align: center;
+            border:none;
+            border-radius:5px;
+            background-color: var(--secondary);
+        }
+
+    .grid .messagePanel {
+        width:100%;
+        grid-column: span 30;
+        text-align:center;
+        height:5em;
+        line-height:5em;
+    }
+
+    .grid .buttonPanel {
+        width:100%;
+        grid-column: span 30;
+        text-align:center;
+    }
+
+        .grid .buttonPanel button {
+            display: block;
+            margin: 0 auto;
+            width: 40%;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--secondary);
+        }
+
+            .grid .buttonPanel button:active {
+                background-color: var(--active);
+                color:var(--secondary);
+            }
+
+            .grid .buttonPanel .btnNewGame {
+                margin-top: 2em;
+            }
+
+.infoIcon {
+    width:2em;
+    display:none;
+    position:absolute;
+    top:10px;
+    right:10px;
+}
+
+.infoText {
+    display:none;
+    position:absolute;
+    top:40px;
+    right:40px;
+    border-radius:5px;
+    background-color:var(--secondary);
+    width:200px;
+    padding:10px 10px 10px 0px;
+    text-align:left;
+    visibility:hidden;
+}
+
+    .infoText ul {
+        list-style:none;
+        margin:0 auto;
+    }
+
+
+@media screen and (min-width:620px) {
+    .grid .textPanel {
+        grid-column: span 15;
+        /*width: 100%;
+        grid-column: span 10;
+        text-align: center;
+        margin-top: 1em;*/
+    }
+
+        .grid .textPanel input {
+            width: 60%;
+        }
+
+
+    .grid .buttonPanel button {
+        width:30%;
+        /*display: block;
+        margin: 0 auto;
+        width: 40%;*/
+    }
+
+    .infoText {
+        visibility: hidden;
+    }
+
+    
+}
+
+@media screen and (min-width:960px) {
+
+    label {
+        font-size: 2em;
+    }
+
+    input, button, p {
+        font-size: 1em;
+    }
+
+    .grid img {
+        width: 60%;
+    }
+
+    .grid .textPanel {
+        grid-column: span 10;
+        /*width: 100%;
+        grid-column: span 10;
+        text-align: center;
+        margin-top: 1em;*/
+    }
+
+        .grid .textPanel input {
+            width: 75%;
+        }
+
+    .grid .messagePanel {
+        grid-column: span 10;
+        /*width: 100%;
+        grid-column: span 10;
+        text-align: center;
+        height: 5em;
+        line-height: 5em;*/
+    }
+
+    .grid .buttonPanel button {
+        width: 20%;
+        /*display: block;
+        margin: 0 auto;
+        width: 40%;*/
+    }
+
+    .grid .buttonPanel .btnRoll {
+        margin-top: 2em;
+    }
+
+    .infoText {
+        visibility:hidden;
+    }
+
+}
+
+@media screen and (min-width:1200px) {
+
+    h1 {
+        font-size:5em;
+    }
+
+    p, label {
+        font-size:3em;
+    }
+
+    input, button {
+        font-size:2em;
+    }
+
+    .grid img {
+        width: 50%;
+    }
+
+    .grid .textPanel input {
+        width: 60%;
+    }
+
+    .grid .buttonPanel button {
+        width: 20%;
+        /*display: block;
+        margin: 0 auto;
+        width: 40%;*/
+    }
+
+    .infoIcon {
+        display:block;
+    }
+
+    .infoText {
+        visibility:visible;
+    }
 }
