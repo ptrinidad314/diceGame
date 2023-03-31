@@ -6,7 +6,7 @@
         public int balance { get; set; } = 50;
         public int bet { get; set; }
         public List<Die> dice { get; set; } = new List<Die>();
-        public string message { get; set; } = string.Empty;
+        public string message { get; set; } = "Place a bet and roll the dice";
 
         public GameState()
         {
