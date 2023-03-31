@@ -8,6 +8,11 @@
         public List<Die> dice { get; set; } = new List<Die>();
         public string message { get; set; } = string.Empty;
 
+        public GameState()
+        {
+            
+        }
+
         public GameState(int numDice)
         {
             GenerateDieRolls(numDice);
